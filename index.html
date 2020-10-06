@@ -3,99 +3,8 @@
 
 <head>
     <title>ChatBot</title>
-    <style>
-        * {
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font: 19px Helvetica, Arial;
-            padding-left: 20%;
-            padding-right: 20%;
-            background-color: #ffe5e5;
-            color: #000000;
-        }
-        
-        #f {
-            background: #000;
-            position: fixed;
-            bottom: 1%;
-            left: 20%;
-            right: 20%;
-            border: 1px solid black;
-        }
-        
-        #f input {
-            border: 2px solid black;
-            width: 80%;
-            font-size: 120%;
-        }
-        
-        #f button {
-            background: rgb(0, 0, 0);
-            border: 2px solid rgb(255, 248, 248);
-            margin-right: 0;
-            width: 20%;
-            font-size: 120%;
-            border-radius: 8px;
-            color: rgb(230, 215, 215);
-        }
-        
-        #messages {
-            list-style-type: none;
-            padding: 0;
-            padding-bottom: 3%;
-            width: 900px;
-            text-align: right;
-        }
-        
-        #messages li {
-            padding: 5px 10px;
-            background-color: #ff9999;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.473);
-            color: #000000;
-            font-family: 'Lato', sans-serif;
-            border-radius: 8px;
-            font-size: 18px;
-            flex: auto;
-            margin-bottom: 10px;
-        }
-        
-        #messages li:hover {
-            background-color: #f56969;
-            transition: zoom-in;
-        }
-        
-        #messages li:nth-child(odd) {
-            font-size: 1rem;
-            font-family: var(--font--family);
-            height: auto;
-            width: 900px;
-            overflow-y: auto;
-            text-align: left;
-        }
-        
-        a:link {
-            color: red;
-        }
-        /* visited link */
-        
-        a:visited {
-            color: green;
-        }
-        /* mouse over link */
-        
-        a:hover {
-            color: hotpink;
-        }
-        /* selected link */
-        
-        a:active {
-            color: blue;
-        }
-    </style>
-
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <script>
     $(document).ready(function() {
@@ -124,21 +33,31 @@
 
 
 <body>
-    type * to return to main menu
-
-    <ul id="messages">
-
-        <li>Hi, how may I help you?Please reply with the numbers to the corresponding questions.</br>1.General IP Queries</br>2.Learning Path 1 </br>3.Learning Path 2 </br>4.Learning Path 3 </br>5.Live Project</br>Type further queries to recieve required
-            answer.
-
-        </li>
-
-        </li>
-
-    </ul>
-    <form action="" id="f">
-        <input id="m" autocomplete="off" /><button type="submit">Send</button>
-    </form>
+    <div class="container">
+        <div class="return-msg">
+            Type * to return to main menu
+        </div>
+        
+        <ul id="messages">
+        
+            <li>Hi, how may I help you?Please reply with the numbers to the corresponding questions.</br>1.General IP
+                Queries</br>2.Learning Path 1 </br>3.Learning Path 2 </br>4.Learning Path 3 </br>5.Live Project</br>Type further
+                queries to recieve required
+                answer.
+        
+            </li>
+        
+            </li>
+        
+        </ul>
+        <div class="form-container">
+            <form action="" id="f">
+                <input id="m" autocomplete="off" /><button type="submit"><img src="./send-symbol-svgrepo-com.svg" alt=""></button>
+            </form>
+        </div>
+        
+    </div>
+    
 </body>
 
 </html>
