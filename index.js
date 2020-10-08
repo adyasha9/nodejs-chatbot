@@ -491,9 +491,9 @@ io.on('connection', function(socket) {
         botstr(msg)
             .then(result => {
                 if (result == null) {
-                    io.emit('chat message', "Please reframe your sentence.");
+                    io.emit('system message', "Please reframe your sentence.");
                 } else {
-                    io.emit('chat message', result);
+                    io.emit('system message', result);
                 }
             });
 

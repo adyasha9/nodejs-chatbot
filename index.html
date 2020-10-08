@@ -3,17 +3,20 @@
 
 <head>
     <title>ChatBot</title>
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" type="text/css" />
 </head>
-<script>
-    $(document).ready(function() {
-        $('#messages').addClass("animated bounce");
-    });
-</script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#messages').addClass("animated bounce");
+        $('#m').focus();
+    });
+</script>
+
 <script>
     $(function() {
         var socket = io();
@@ -21,10 +24,16 @@
             e.preventDefault(); // prevents page reloading
             socket.emit('chat message', $('#m').val());
             $('#m').val('');
+            $('#m').focus();
             return false;
         });
         socket.on('chat message', function(msg) {
-            $('#messages').append($('<li>' + msg + '</li > '));
+            $('#messages').append($('<li class="entry user-entry"><div class="message user-message">' + msg + '</div></li > '));
+            $("#main-content").scrollTop(function() { return this.scrollHeight; });
+        });
+        socket.on('system message', function(msg) {
+            $('#messages').append($('<li class="entry"><div class="message system-message">' + msg + '</div></li > '));
+            $("#main-content").scrollTop(function() { return this.scrollHeight; });
         });
 
     });
@@ -33,31 +42,45 @@
 
 
 <body>
-    <div class="container">
-        <div class="return-msg">
-            Type * to return to main menu
+    <div id="main-grid" class="grid">
+        <div class="navbar flex flex-center">
+            <div class="brand">
+                ChatBot
+            </div>
         </div>
-        
-        <ul id="messages">
-        
-            <li>Hi, how may I help you?Please reply with the numbers to the corresponding questions.</br>1.General IP
-                Queries</br>2.Learning Path 1 </br>3.Learning Path 2 </br>4.Learning Path 3 </br>5.Live Project</br>Type further
-                queries to recieve required
-                answer.
-        
-            </li>
-        
-            </li>
-        
-        </ul>
-        <div class="form-container">
-            <form action="" id="f">
-                <input id="m" autocomplete="off" /><button type="submit"><img src="./send-symbol-svgrepo-com.svg" alt=""></button>
-            </form>
+
+        <main id="main-content">
+            <div class="wrap">
+                <ul id="messages">
+
+                    <li class="entry">
+                        <div class="message system-message">
+                           Hi, how may I help you?
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <div class="message system-message">
+                           Please reply with the numbers to the corresponding questions.</br></br>1.General IP Queries</br>2.Learning Path 1 </br>3.Learning Path 2 </br>4.Learning Path 3 </br>5.Live Project</br></br>Type further queries to recieve required answer</br></br>Type * to return to main menu
+                        </div>
+                    </li>
+
+                </ul>            
+            </div>
+        </main>
+
+        <div class="navbar">
+            <div class="full-height wrap flex flex-center">
+                <div id="user-input">
+                    <form action="" id="f" class="grid">
+                        <input id="m" autocomplete="off" placeholder="Type in your reply"/>
+                        <button id="submit-button" type="submit"><svg width="16px" height="16px" color="#3C9EE9" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg></button>
+                    </form>                
+                </div>
+            </div>
         </div>
-        
+
     </div>
-    
+
 </body>
 
 </html>
