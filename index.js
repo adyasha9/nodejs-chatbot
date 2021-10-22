@@ -24,7 +24,7 @@ async function botstr(findStr) {
     manager.addDocument('en', 'howdy-do', 'greetings.hello');
     manager.addDocument('en', 'aloha', 'greetings.hello');
     manager.addDocument('en', 'hey', 'greetings.hello');
-
+//this is a wasted attempt, super bad lol
     manager.addDocument('en', 'good day', 'greetings.goodDay');
     manager.addDocument('en', 'good night', 'greetings.goodNight');
     manager.addDocument('en', 'good morning', 'greetings.goodMorning');
