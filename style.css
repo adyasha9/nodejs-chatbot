@@ -12,7 +12,9 @@ body {
   background-color: #ffe5e5;
   color: #000000;
 }
-
+hidden {
+  display: none;
+}
 #f {
   background: #000;
   position: fixed;
